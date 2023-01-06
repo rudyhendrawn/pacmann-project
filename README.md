@@ -1,6 +1,6 @@
-# pacmann-project
+# Pacmann - Probability Project
 
-Repositori projek Pacmann course
+Repositori projek Probability course Pacmann
 
 
 # Navigasi
