@@ -1,0 +1,1 @@
+PATH = '~/miniforge3/envs/pacmann-course/codes/pacmann-project/projek_2/data/'
