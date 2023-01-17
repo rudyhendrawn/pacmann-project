@@ -56,6 +56,9 @@ def total_order(total_price : int):
 		return (total_price, discount_prince, discount)
 
 def clear_screen():
+	"""
+	Clear the screen
+	"""
 	sleep(2)
 	os.system('cls' if os.name == 'nt' else 'clear')
 

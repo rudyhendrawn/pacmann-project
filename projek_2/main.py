@@ -6,6 +6,9 @@ from lib.transaction import Transaction
 
 
 def input_order():
+	"""
+	Get user input
+	"""
 	data = {
 		'Item': None,
 		'Jumlah Item': None,
@@ -21,6 +24,9 @@ def input_order():
 	return data
 
 def check_order(data : Transaction):
+	"""
+	Check the order
+	"""
 	data_viewer = data.view_data()
 	if data_viewer == True:
 		print("Your order is:")
@@ -30,6 +36,9 @@ def check_order(data : Transaction):
 		return False
 
 def edit_order(data : Transaction):
+	"""
+	Edit the order
+	"""
 	choise = int(input("Choose order's number that you want to edit: "))
 	print("Choose what you want to edit:")
 	print("1. Item")
