@@ -55,6 +55,23 @@ def total_order(total_price : int):
 		total_price = round(total_price - discount_price, 0)
 		return (total_price, discount_prince, discount)
 
+def discount(dsc : int):
+	"""
+	Discount
+
+	Parameters
+	----------
+	dsc : int
+		Discount price
+
+	Returns
+	-------
+	int
+		Discount price
+	"""
+	pass
+	# return dsc
+
 def clear_screen(slp=2):
 	"""
 	Clear the screen
