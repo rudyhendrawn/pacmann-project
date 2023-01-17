@@ -42,17 +42,17 @@ def edit_order(data : Transaction):
 	choise = int(input("Choose order's number that you want to edit: "))
 	print("Choose what you want to edit:")
 	print("1. Item")
-	print("2. Jumlah Item")
-	print("3. Harga/item")
+	print("2. Number of Item")
+	print("3. Price per item")
 	edit_item = int(input("Choose menu (1/2/3): "))
 	if edit_item == 1:
 		item_name = input("Item name: ")
 		data.update_item_name(choise, item_name)
 	elif edit_item == 2:
-		qty = int(input("Jumlah Item: "))
+		qty = int(input("Number of Item: "))
 		data.update_item_qty(choise, qty)
 	elif edit_item == 3:
-		price = int(input("Harga/item: "))
+		price = int(input("Price per item: "))
 		data.update_item_price(choise, price)
 
 if '__main__' == __name__:
@@ -75,10 +75,11 @@ if '__main__' == __name__:
 		print("Program Menu:")
 		print("1. Add Item")
 		print("2. Check Item")
-		print("3. Edit Item")
-		print("4. Reset Transaction")
-		print("5. Save Transaction")
-		print("6. Exit")
+		print("3. Delete Item")
+		print("4. Edit Item")
+		print("5. Reset Transaction")
+		print("6. Save Transaction")
+		print("7. Exit")
 		choice = input("Choose menu (1/2/3/4/5/6): ")
 		if '1' == choice:
 			# Get user input
@@ -95,82 +96,33 @@ if '__main__' == __name__:
 			helpers.clear_screen()
 		elif '2' == choice:
 			order = check_order(transaction)
-			if order == True:
-				choise = input("Do you want to edit this order? (y/n)")
-				if 'y' == choise:
-					edit_order(transaction)
-				helpers.clear_screen()
-			elif order == False:
-				helpers.clear_screen()
+			helpers.clear_screen(slp=3)
 		elif '3' == choice:
 			pass
+		elif '4' == choice:
+			pass
+			# Check first the order
+			# order = check_order(transaction)
+			# if order == True:
+			# 	edit_order(transaction)
+			# 	helpers.clear_screen()
+			# else:
+			# 	print("You haven't order anything yet")
+			# 	helpers.clear_screen()
+		elif '5' == choice:
+			choise_reset = input("Do you really want to reset the transaction? (y/n): ")
+			if 'y' == choise_reset:
+				transaction.reset_transaction()
+				helpers.clear_screen()
 		elif '6' == choice:
+			choise_save = input("Do you really want to save the transaction? (y/n): ")
+			if 'y' == choise_save:
+				transaction.save_to_csv()
+				helpers.clear_screen()
+		elif '7' == choice:
 			print("Thank you for ordering. See you next time\n")
 			break
 		else:
 			print("Invalid input. Please try again\n")
 			helpers.clear_screen()
-
-		# Ask the user if they are first time order
-		# choice = input("\nFirst time order? (y/n): ")
-		# if 'y' == choice:
-		# 	while True:
-		# 		# Get user input
-		# 		user_data = input_order()
-		# 		data['Item'].append(user_data['Item'])
-		# 		data['Jumlah Item'].append(user_data['Jumlah Item'])
-		# 		data['Harga/item'].append(user_data['Harga/item'])
-		# 		data['Harga Total'].append(user_data['Harga Total'])
-
-		# 		# Ask the user if they want to add more items
-		# 		choice = input("\nAdd more items? (y/n): ")
-		# 		if 'n' == choice:
-		# 			break
-		# else:
-		# 	if data is not None:
-		# 		print("You don't have item in your order. Please add some items first\n")
-		# 		user_data = input_order()
-		# 		data['Item'].append(user_data['Item'])
-		# 		data['Jumlah Item'].append(user_data['Jumlah Item'])
-		# 		data['Harga/item'].append(user_data['Harga/item'])
-		# 		data['Harga Total'].append(user_data['Harga Total'])
-		# 	else:
-		# 		print("You already have some orders\n")
-		# 		choice = input("Do you to check your previous orders? (y/n): ")
-		# 		if 'y' == choice:
-		# 			print(transaction.data)
-		# 		else:
-		# 			break
-		# transaction.add_item(data)
-		# print(transaction.data)
-		# sleep(2)
-		# os.system('cls')
-
-				
-
-		# while True:
-		# 	# Ask the user if they want to check the data
-		# 	choice = input('\nCheck the data? (y/n): ')
-		# 	if 'y' == choice:
-		# 		print(transaction.data)
-		# 	else:
-		# 		break
-
-	# Print the data
 	print('\n')
-	
-
-	# Ask the user if they want print the total order
-	# choice = input('\nPrint total order? (y/n): ')
-	# if 'y' == choice:
-	# 	(total_order, discount_price, discount) = helpers.total_order(transaction.data['Harga Total'].sum())
-	# 	print("\nTotal: Rp.{:,}".format(transaction.data['Harga Total'].sum()))
-	# 	print("Discount: {}".format(discount))
-	# 	print("Discount Price: Rp.{:,}".format(discount_price))
-	# 	print("Total Order: Rp.{:,}".format(total_order))
-		# print("Test currency: {}".format(locale.currency(total_order, grouping=True)))
-
-	# Ask the user if they want to store the data to csv
-	# choice = input('\nStore the data to csv? (y/n): ')
-	# if 'y' == choice:
-	# 	transaction.store_data()

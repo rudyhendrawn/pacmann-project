@@ -55,11 +55,11 @@ def total_order(total_price : int):
 		total_price = round(total_price - discount_price, 0)
 		return (total_price, discount_prince, discount)
 
-def clear_screen():
+def clear_screen(slp=2):
 	"""
 	Clear the screen
 	"""
-	sleep(2)
+	sleep(slp)
 	os.system('cls' if os.name == 'nt' else 'clear')
 
 def create_csv_file():

@@ -152,19 +152,48 @@ class Transaction:
 		else:
 			print(self.data)
 
-	def delete_item(self, index : int):
+	def delete_item(self, name : str):
 		"""
-		Delete the data by index
+		Delete the data by name
 		
 		Parameters
 		----------
-		index : int
+		name : str
 		"""
-		self.data = self.data.drop(index)
-		self.data.reset_index(drop=True, inplace=True)
+		if self.is_empty():
+			print("Your transaction is empty")
+		else:
+			# Search in the dataframe for the item name
+			index = self.data[self.data['Item'] == item_name].index[0]
+			# Delete the row
+			self.data = self.data.drop(index)
+			self.data.reset_index(drop=True, inplace=True)
+
+	def _search_item(self, name : str):
+		"""
+		Search the data by name
+		
+		Parameters
+		----------
+		name : str
+
+		Returns
+		-------
+		int
+			Index of the item
+		"""
+		if self.is_empty():
+			print("Your transaction is empty")
+		else:
+			# Search in the dataframe for the item name
+			index = self.data[self.data['Item'] == item_name].index[0]
+			return index
 
 	def reset_transaction(self):
 		"""
 		Reset the data
 		"""
-		self.data = pd.DataFrame(columns=['Item', 'Jumlah Item', 'Harga/item', 'Harga Total'])
+		if self.is_empty():
+			print("Your transaction is empty")
+		else:
+			self.data = pd.DataFrame(columns=['Item', 'Jumlah Item', 'Harga/item', 'Harga Total'])
