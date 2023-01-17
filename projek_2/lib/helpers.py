@@ -55,8 +55,28 @@ def total_order(total_price : int):
 		total_price = round(total_price - discount_price, 0)
 		return (total_price, discount_prince, discount)
 
-def clear_screen():
-	sleep(2)
+def discount(dsc : int):
+	"""
+	Discount
+
+	Parameters
+	----------
+	dsc : int
+		Discount price
+
+	Returns
+	-------
+	int
+		Discount price
+	"""
+	pass
+	# return dsc
+
+def clear_screen(slp=2):
+	"""
+	Clear the screen
+	"""
+	sleep(slp)
 	os.system('cls' if os.name == 'nt' else 'clear')
 
 def create_csv_file():
