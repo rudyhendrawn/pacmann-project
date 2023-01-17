@@ -27,7 +27,7 @@ def check_order(data : Transaction):
 	"""
 	Check the order
 	"""
-	data_viewer = data.view_data()
+	data_viewer = data.is_empty()
 	if data_viewer == True:
 		print("Your order is:")
 		print(data_viewer)
@@ -98,7 +98,15 @@ if '__main__' == __name__:
 			order = check_order(transaction)
 			helpers.clear_screen(slp=3)
 		elif '3' == choice:
-			pass
+			# Search item that will be deleted
+			if transaction.is_empty() == True:
+				print("Your order is empty. Please add some items first")
+			else:
+				print("Your order is:")
+				transaction.view_data()
+				print("\n")
+				search_item = input("search order's item that you want to delete: ")
+				transaction.search_item(name=search_item)
 		elif '4' == choice:
 			pass
 			# Check first the order

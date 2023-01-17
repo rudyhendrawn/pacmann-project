@@ -169,9 +169,11 @@ class Transaction:
 			self.data = self.data.drop(index)
 			self.data.reset_index(drop=True, inplace=True)
 
-	def _search_item(self, name : str):
+	def search_item(self, name : str):
 		"""
-		Search the data by name
+		Private method\n
+		Search the data by exact name in the dataframe. If the name is not found, 
+		it will return -1, otherwise it will return the index of the item.
 		
 		Parameters
 		----------
@@ -180,14 +182,21 @@ class Transaction:
 		Returns
 		-------
 		int
+			-1, if the item is not found
+		
+		otherwise
+
+		int
 			Index of the item
 		"""
 		if self.is_empty():
 			print("Your transaction is empty")
+			return -1
 		else:
 			# Search in the dataframe for the item name
 			index = self.data[self.data['Item'] == item_name].index[0]
-			return index
+			print("Item found at index: ", index)
+			# return index
 
 	def reset_transaction(self):
 		"""
