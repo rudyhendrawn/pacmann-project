@@ -13,6 +13,7 @@ Aplikasi ini adalah aplikasi sistem kasir berbasis console yang dibangun dengan 
 1. User/customer pertama kali akan dihadapkan dengan tampilan menu aplikasi, diantaranya:
 	- Add Item (Input Barang)
 	- Check Item (Memeriksa Barang)
+	- Delete Item (Menghapus Barang)
 	- Edit Item (Mengedit Barang)
 	- Reset Transaction (Menghapus Transaksi)
 	- Save Transaction (Menyimpan Transaksi ke dalam dokumen CSV)
@@ -55,9 +56,62 @@ Terdapat 4 modul utama dalam program ini, yaitu:
 		- `is_empty()` untuk mengecek apakah data barang yang dibeli user/customer kosong atau tidak.
 		- `view_data()` untuk menampilkan data barang yang dibeli user/customer.
 		- `delete_item()` untuk menghapus barang yang dibeli user/customer. Memiliki 1 parameter, yaitu:
-			- `index` berupa integer yang berisi index dari barang yang akan dihapus.
+			- `item_index` berupa integer yang berisi index dari barang yang akan dihapus.
+		- `search_item()` untuk mencari barang yang dibeli user/customer. Memiliki 1 parameter, yaitu:
+			- `item_name` berupa string yang berisi nama barang yang akan dicari.
 		- `reset_transaction()` untuk menghapus semua data barang yang dibeli user/customer.
 4. Modul path
-	- Modul ini berisi variabel global `PATH` yang berisi nilai string  path dari file CSV yang berisi daftar barang yang dibeli user/customer.
+	- Modul ini berisi 3 variabel global, yaitu:
+		- `PATH`, variabel global yang berisi nilai string path dari direktori data transaksi.
+		- `DATA_FILE`, variabel global yang berisi nilai string nama file CSV transaksi.
+		- `DATA_PATH`, variabel global yang berisi nilai string path dari file CSV transaksi.
 
 ### Test Cases and Results
+**Test 1: Input Item**
+1. User memilih menu Add Item.
+2. User memasukkan nama barang, jumlah barang, dan harga barang.
+	- Nama Item: Ayam Goreng, Qty: 2, Harga: 20000
+	- Nama Item: Pasta Gigi, Qty: 3, Harga: 15000
+Expected output:
+```
+Item berhasil ditambahkan!
+```
+
+**Test 2: Delete Item**
+1. User memilih menu Deleted Item.
+2. Sistem menampilkan barang yang telah dibeli user/customer.
+3. Jika tidak ada transaksi, maka akan muncul pesan error.
+```
+Your order is empty. Please add some items first
+```
+4. Jika ada transaksi, maka user memasukkan nama barang yang ingin dihapus.
+	- Nama Item: Pasta Gigi
+
+Expected output:
+```
+Your order is:
+<image>
+search order's item that you want to delete: <input user>
+Item <nama item> found at index: <nomor item>
+<image>
+Item has been deleted 
+```
+5. Jika user memasukkan nama barang yang tidak ada, maka akan muncul pesan error.
+	- Nama Item: Sabun Mandi
+
+Expected output:
+```
+Item not found
+``` 
+
+**Test 3: Reset Transaction**
+1. User memilih menu Reset Transaction.
+2. User memasukkan konfirmasi untuk menghapus transaksi.
+	- Y
+Expected output:
+```
+Your transction has been reset.
+```
+
+**Test 4: Total Transaction**
+
