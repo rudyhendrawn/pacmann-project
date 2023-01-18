@@ -108,6 +108,7 @@ Item not found
 1. User memilih menu Reset Transaction.
 2. User memasukkan konfirmasi untuk menghapus transaksi.
 	- Y
+
 Expected output:
 ```
 Your transction has been reset.

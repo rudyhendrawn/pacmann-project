@@ -93,7 +93,14 @@ if '__main__' == __name__:
 			transaction.add_item(data)
 			helpers.clear_screen()
 		elif '2' == choice:
-			transaction.view_data()
+			# print(transaction['Harga Total'].sum())
+			# transaction.view_data()
+			trc = transaction.get_all()
+			print(trc)
+			total_price, discount_price, discount = helpers.count_total_order(trc['Harga Total'].sum())
+			print("Total price: {}".format(total_price))
+			print("Discount: {}%".format(discount))
+			print("Discount price: {}".format(discount_price))
 			helpers.clear_screen(slp=3)
 		elif '3' == choice:
 			# Search item that will be deleted
