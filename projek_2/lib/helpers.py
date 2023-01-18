@@ -24,7 +24,7 @@ def total_price(jml_item : int, harga : int):
 	"""
 	return jml_item * harga
 
-def total_order(total_price : int):
+def count_total_order(total_price : int):
 	"""
 	Total belanja keseluruhan
 
@@ -39,38 +39,37 @@ def total_order(total_price : int):
 		Total belanja keseluruhan
 	"""
 	# Calculate the discount
+	discount_price = 0
+	discount = 0
 	if total_price > 200000:
-		discount = '5%'
-		discount_price = round(total_price * 0.05, 0)
+		discount_price, discount = count_discount(total_price, '5%')
 		total_price = round(total_price - discount_price, 0)
-		return( total_price, discount_price, discount)
 	elif total_price > 300000:
-		discount = '8%'
-		discount_price = round(total_price * 0.08, 0)
+		discount_price, discount = count_discount(total_price, '8%')
 		total_price = round(total_price - discount_price, 0)
-		return (total_price, discount_price, discount)
 	elif total_price > 500000:
-		discount = '10%'
-		discount_price = round(total_price * 0.1, 0)
+		discount_price, discount = count_discount(total_price, '10%')
 		total_price = round(total_price - discount_price, 0)
-		return (total_price, discount_prince, discount)
 
-def discount(dsc : int):
+	return total_price, discount_price, discount
+
+def count_discount(total_price : int, dsc : str):
 	"""
 	Discount
 
 	Parameters
 	----------
-	dsc : int
-		Discount price
+	dsc : string
+		Discount price format string number + string % (ex: 5%)
 
 	Returns
 	-------
 	int
 		Discount price
 	"""
-	pass
-	# return dsc
+	discount = int(dsc.split('%')[0])
+	discount_price = round(total_price * (discount / 100), 0)
+	return discount_price, discount
 
 def clear_screen(slp=2):
 	"""
