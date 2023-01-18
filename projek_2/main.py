@@ -56,11 +56,9 @@ def edit_order(data : Transaction):
 		data.update_item_price(choise, price)
 
 if '__main__' == __name__:
-	# Create a csv file
-	helpers.create_csv_file()
-
 	# Read the data from the csv file
 	transaction = Transaction()
+	transaction.load_data()
 
 	# Create a dictionary to store the data before it is added to dataframe
 	data = {
@@ -95,7 +93,7 @@ if '__main__' == __name__:
 			transaction.add_item(data)
 			helpers.clear_screen()
 		elif '2' == choice:
-			order = check_order(transaction)
+			transaction.view_data()
 			helpers.clear_screen(slp=3)
 		elif '3' == choice:
 			# Search item that will be deleted
@@ -106,7 +104,13 @@ if '__main__' == __name__:
 				transaction.view_data()
 				print("\n")
 				search_item = input("search order's item that you want to delete: ")
-				transaction.search_item(name=search_item)
+				index_item = transaction.search_item(item_name=search_item)
+				if index_item == None:
+					print("Item not found")
+				else:
+					print("Item {} found at index: {}".format(search_item, index_item))
+					transaction.delete_item(index_item)
+					print("Item has been deleted")
 		elif '4' == choice:
 			pass
 			# Check first the order

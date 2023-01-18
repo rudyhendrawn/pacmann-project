@@ -3,9 +3,7 @@ import os
 import pandas as pd
 
 from lib import helpers
-from lib.path import PATH
-
-DATA_FILE = 'transaksi.csv'
+from lib.path import DATA_PATH
 
 class Transaction:
 	"""
@@ -16,7 +14,6 @@ class Transaction:
 		Constructor
 		"""
 		self.data = pd.DataFrame()
-		self.data_path = os.path.join(PATH, DATA_FILE)
 
 	def load_data(self):
 		"""
@@ -26,8 +23,8 @@ class Transaction:
 		-------
 		pandas dataframe
 		"""
-		self.data = pd.read_csv(self.data_path)
-		return self.data
+		self.data = pd.read_csv(DATA_PATH)
+		# return self.data
 
 	def save_to_csv(self):
 		"""
@@ -152,9 +149,9 @@ class Transaction:
 		else:
 			print(self.data)
 
-	def delete_item(self, name : str):
+	def delete_item(self, index_item : int):
 		"""
-		Delete the data by name
+		Delete the data by index from `search_item()` method.
 		
 		Parameters
 		----------
@@ -163,13 +160,11 @@ class Transaction:
 		if self.is_empty():
 			print("Your transaction is empty")
 		else:
-			# Search in the dataframe for the item name
-			index = self.data[self.data['Item'] == item_name].index[0]
 			# Delete the row
-			self.data = self.data.drop(index)
+			self.data = self.data.drop(index_item)
 			self.data.reset_index(drop=True, inplace=True)
 
-	def search_item(self, name : str):
+	def search_item(self, item_name : str):
 		"""
 		Private method\n
 		Search the data by exact name in the dataframe. If the name is not found, 
@@ -194,9 +189,11 @@ class Transaction:
 			return -1
 		else:
 			# Search in the dataframe for the item name
-			index = self.data[self.data['Item'] == item_name].index[0]
-			print("Item found at index: ", index)
-			# return index
+			try:
+				index = self.data[self.data['Item'] == item_name].index[0]
+			except:
+				index = None
+			return index
 
 	def reset_transaction(self):
 		"""
