@@ -34,7 +34,7 @@ def check_order(data : Transaction):
 		return True
 	else:
 		return False
-		
+
 if '__main__' == __name__:
 	# Read the data from the csv file
 	transaction = Transaction()
@@ -54,7 +54,7 @@ if '__main__' == __name__:
 		print("1. Add Item")
 		print("2. Check Item")
 		print("3. Delete Item")
-		print("4. Edit Item")
+		print("4. Edit Item")			# Fitur masih belum berfungsi dengan baik
 		print("5. Reset Transaction")
 		print("6. Save Transaction")
 		print("7. Exit")

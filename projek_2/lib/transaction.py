@@ -101,7 +101,7 @@ class Transaction:
 		if self.is_empty():
 			print("Your transaction is empty")
 		else:
-			self.data.loc[index, 'Jumlah Item'] = qty
+			self.data.loc[index, ['Jumlah Item']] = qty
 
 	def update_item_price(self, index : int, price : int):
 		"""
@@ -115,7 +115,7 @@ class Transaction:
 		if self.is_empty():
 			print("Your transaction is empty")
 		else:
-			self.data.loc[index, 'Harga'] = price
+			self.data.loc[index, ['Harga']] = price
 
 	def get_all(self):
 		"""
