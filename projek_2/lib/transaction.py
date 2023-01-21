@@ -85,7 +85,7 @@ class Transaction:
 			print("Your transaction is empty")
 		else:
 			try:
-				self.data.loc[index, 'Item'] = [item_name]
+				self.data.loc[index, ['Item']] = item_name
 			except:
 				print("Item name must be a string or there is no item with that index.")
 
@@ -206,3 +206,31 @@ class Transaction:
 			print("Your transaction is empty")
 		else:
 			self.data = pd.DataFrame(columns=['Item', 'Jumlah Item', 'Harga/item', 'Harga Total'])
+
+	def edit_order(self):
+		"""
+		Edit the order mechanism in the main program. 
+		User can choose what they want to edit, 
+		whether it is the item name, quantity, or price.
+
+		Parameters
+		----------
+		data : Transaction
+		"""
+		print("Choose what you want to edit:")
+		print("1. Item")
+		print("2. Number of Item")
+		print("3. Price per item")
+		edit_item = int(input("Type menu (1/2/3): "))
+		if edit_item == 1:
+			index = input("Type the order's number: ")
+			item_name = input("Item name: ")
+			self.update_item_name(index, item_name)
+		elif edit_item == 2:
+			index = input("Type the order's number: ")
+			qty = int(input("Number of Item: "))
+			self.update_item_qty(index, qty)
+		elif edit_item == 3:
+			index = input("Type the order's number: ")
+			price = int(input("Price per item: "))
+			self.update_item_price(index, price)

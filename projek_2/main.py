@@ -34,35 +34,7 @@ def check_order(data : Transaction):
 		return True
 	else:
 		return False
-
-def edit_order(data : Transaction):
-	"""
-	Edit the order mechanism in the main program. 
-	User can choose what they want to edit, 
-	whether it is the item name, quantity, or price.
-
-	Parameters
-	----------
-	data : Transaction
-	"""
-	print("Choose what you want to edit:")
-	print("1. Item")
-	print("2. Number of Item")
-	print("3. Price per item")
-	edit_item = int(input("Type menu (1/2/3): "))
-	if edit_item == 1:
-		index = input("Type the order's number: ")
-		item_name = input("Item name: ")
-		data.update_item_name(index, item_name)
-	elif edit_item == 2:
-		index = input("Type the order's number: ")
-		qty = int(input("Number of Item: "))
-		data.update_item_qty(index, qty)
-	elif edit_item == 3:
-		index = input("Type the order's number: ")
-		price = int(input("Price per item: "))
-		data.update_item_price(index, price)
-
+		
 if '__main__' == __name__:
 	# Read the data from the csv file
 	transaction = Transaction()
@@ -118,7 +90,7 @@ if '__main__' == __name__:
 				print("Your order is:")
 				transaction.view_data()
 				print("\n")
-				search_item = input("search order's item that you want to delete: ")
+				search_item = input("Search order's item that you want to delete: ")
 				index_item = transaction.search_item(item_name=search_item)
 				if index_item == None:
 					print("Item not found")
@@ -129,7 +101,7 @@ if '__main__' == __name__:
 		elif '4' == choice:
 			print("Your order is:")
 			transaction.view_data()
-			edit_order(data=transaction)
+			transaction.edit_order()
 		elif '5' == choice:
 			choise_reset = input("Do you really want to reset the transaction? (y/n): ")
 			if 'y' == choise_reset:
