@@ -14,8 +14,8 @@ Aplikasi ini adalah aplikasi sistem kasir berbasis console yang dibangun dengan 
 	- Add Item (Input Barang)
 	- Check Item (Memeriksa Barang)
 	- Delete Item (Menghapus Barang)
-	- Edit Item (Mengedit Barang)
-	- Reset Transaction (Menghapus Transaksi)
+	- Edit Item (Mengedit Barang) *belum berfungsi dengan baik
+	- Reset Transaction (Menghapus Transaksi) 
 	- Save Transaction (Menyimpan Transaksi ke dalam dokumen CSV)
 	- Exit (Keluar dari aplikasi)
 2. User dapat memilih menu berdasarkan nomor yang tertera di depannya. Misalnya, jika user ingin memilih menu Add Item, maka user dapat mengetikkan angka 1 dan menekan tombol Enter.
@@ -24,7 +24,9 @@ Aplikasi ini adalah aplikasi sistem kasir berbasis console yang dibangun dengan 
 ### Program Module
 Terdapat 4 modul utama dalam program ini, yaitu:
 1. Modul main (program utama)
-	- Modul ini berisi program utama yang akan dijalankan oleh user/customer.
+	- Modul ini berisi program utama yang akan dijalankan oleh user/customer. Terdapat 2 fungsi di dalam modul utama, yaitu:
+		- `input_order()` untuk mekanisme input barang yang dibeli user/customer.
+		- `check_order()` untuk menampilkan daftar barang yang dibeli user/customer.
 2. Modul helpers
 	- Modul ini berisi fungsi-fungsi yang digunakan untuk membantu program utama, diantaranya:
 		- fungsi `total_price()` untuk menghitung total harga barang yang dibeli
@@ -60,6 +62,7 @@ Terdapat 4 modul utama dalam program ini, yaitu:
 		- `search_item()` untuk mencari barang yang dibeli user/customer. Memiliki 1 parameter, yaitu:
 			- `item_name` berupa string yang berisi nama barang yang akan dicari.
 		- `reset_transaction()` untuk menghapus semua data barang yang dibeli user/customer.
+		- `edit_oder()` untuk mengubah data barang yang dibeli user/customer. User/customer dapat mengubah nama barang, jumlah barang, dan harga barang.
 4. Modul path
 	- Modul ini berisi 3 variabel global, yaitu:
 		- `PATH`, variabel global yang berisi nilai string path dari direktori data transaksi.
