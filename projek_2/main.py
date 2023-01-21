@@ -37,28 +37,36 @@ def check_order(data : Transaction):
 
 def edit_order(data : Transaction):
 	"""
-	Edit the order
+	Edit the order mechanism in the main program. 
+	User can choose what they want to edit, 
+	whether it is the item name, quantity, or price.
+
+	Parameters
+	----------
+	data : Transaction
 	"""
-	choise = int(input("Choose order's number that you want to edit: "))
 	print("Choose what you want to edit:")
 	print("1. Item")
 	print("2. Number of Item")
 	print("3. Price per item")
-	edit_item = int(input("Choose menu (1/2/3): "))
+	edit_item = int(input("Type menu (1/2/3): "))
 	if edit_item == 1:
+		index = input("Type the order's number: ")
 		item_name = input("Item name: ")
-		data.update_item_name(choise, item_name)
+		data.update_item_name(index, item_name)
 	elif edit_item == 2:
+		index = input("Type the order's number: ")
 		qty = int(input("Number of Item: "))
-		data.update_item_qty(choise, qty)
+		data.update_item_qty(index, qty)
 	elif edit_item == 3:
+		index = input("Type the order's number: ")
 		price = int(input("Price per item: "))
-		data.update_item_price(choise, price)
+		data.update_item_price(index, price)
 
 if '__main__' == __name__:
 	# Read the data from the csv file
 	transaction = Transaction()
-	transaction.load_data()
+	transaction.load_data()	# Nanti dihapus/komen aja setelah final push
 
 	# Create a dictionary to store the data before it is added to dataframe
 	data = {
@@ -78,7 +86,7 @@ if '__main__' == __name__:
 		print("5. Reset Transaction")
 		print("6. Save Transaction")
 		print("7. Exit")
-		choice = input("Choose menu (1/2/3/4/5/6): ")
+		choice = input("Type menu (1/2/3/4/5/6): ")
 		if '1' == choice:
 			# Get user input
 			while True:
@@ -119,15 +127,9 @@ if '__main__' == __name__:
 					transaction.delete_item(index_item)
 					print("Item has been deleted")
 		elif '4' == choice:
-			pass
-			# Check first the order
-			# order = check_order(transaction)
-			# if order == True:
-			# 	edit_order(transaction)
-			# 	helpers.clear_screen()
-			# else:
-			# 	print("You haven't order anything yet")
-			# 	helpers.clear_screen()
+			print("Your order is:")
+			transaction.view_data()
+			edit_order(data=transaction)
 		elif '5' == choice:
 			choise_reset = input("Do you really want to reset the transaction? (y/n): ")
 			if 'y' == choise_reset:

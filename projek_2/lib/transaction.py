@@ -84,7 +84,10 @@ class Transaction:
 		if self.is_empty():
 			print("Your transaction is empty")
 		else:
-			self.data.loc[index, 'Item'] = item_name
+			try:
+				self.data.loc[index, 'Item'] = [item_name]
+			except:
+				print("Item name must be a string or there is no item with that index.")
 
 	def update_item_qty(self, index : int, qty : int):
 		"""
