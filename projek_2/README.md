@@ -30,9 +30,9 @@ Terdapat 4 modul utama dalam program ini, yaitu:
 2. Modul helpers
 	- Modul ini berisi fungsi-fungsi yang digunakan untuk membantu program utama, diantaranya:
 		- fungsi `total_price()` untuk menghitung total harga barang yang dibeli
-		- fungsi `total_order()` untuk menghitung total barang dan total harga barang yang dibeli.
-		- fungsi `discount()` untuk menghitung diskon yang diberikan kepada user/customer berdasarkan total biaya belanja user/customer.
-		- fungsi 'clear_screen()` untuk membersihkan layar terminal.
+		- fungsi `count_total_order()` untuk menghitung total barang dan total harga barang yang dibeli.
+		- fungsi `count_discount()` untuk menghitung diskon yang diberikan kepada user/customer berdasarkan total biaya belanja user/customer.
+		- fungsi `clear_screen()` untuk membersihkan layar terminal.
 		- fungsi `create_csv_file()` untuk membuat file CSV dari transaksi user/customer.
 3. Modul transaction
 	- Modul ini berisi kelas `Transaction` yang digunakan untuk memproses transaksi user/customer.
@@ -93,7 +93,7 @@ Expected output:
 ![delete-found](asset/Test-case-2-Delete-found.png)
 
 5. Jika user memasukkan nama barang yang tidak ada, maka akan muncul pesan error.
-	- Nama Item: Sabun Mandi
+	- Nama Item: Pasta Gigi
 
 Expected output:
 ![delete-not-found](asset/Test-case-2-Delete-not-found.png)
