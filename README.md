@@ -1,4 +1,4 @@
-# Pacmann - Probability Project
+# Pacmann - Project Repository
 
 Repositori projek pada course Pacmann
 
