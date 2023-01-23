@@ -76,9 +76,7 @@ Terdapat 4 modul utama dalam program ini, yaitu:
 	- Nama Item: Ayam Goreng, Qty: 2, Harga: 20000
 	- Nama Item: Pasta Gigi, Qty: 3, Harga: 15000
 Expected output:
-```
-Item berhasil ditambahkan!
-```
+![add-item](asset/Test-case-1.png)
 
 **Test 2: Delete Item**
 1. User memilih menu Deleted Item.
@@ -91,21 +89,14 @@ Your order is empty. Please add some items first
 	- Nama Item: Pasta Gigi
 
 Expected output:
-```
-Your order is:
-<image>
-search order's item that you want to delete: <input user>
-Item <nama item> found at index: <nomor item>
-<image>
-Item has been deleted 
-```
+
+![delete-found](asset/Test-case-2-Delete-found.png)
+
 5. Jika user memasukkan nama barang yang tidak ada, maka akan muncul pesan error.
 	- Nama Item: Sabun Mandi
 
 Expected output:
-```
-Item not found
-``` 
+![delete-not-found](asset/Test-case-2-Delete-not-found.png)
 
 **Test 3: Reset Transaction**
 1. User memilih menu Reset Transaction.
@@ -114,8 +105,13 @@ Item not found
 
 Expected output:
 ```
-Your transction has been reset.
+Transction has been reset.
 ```
+![reset-transaction](asset/Test-case-3-reset.png)
 
 **Test 4: Total Transaction**
+1. User memilih menu Check Item
+
+Expected output:
+![total-transaction](asset/Test-case-4-total-item.png)
 
