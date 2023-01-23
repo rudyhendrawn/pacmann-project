@@ -1,4 +1,3 @@
-# Create a class that will be used to read, write, and manipulate csv data using pandas in the project
 import os
 import pandas as pd
 

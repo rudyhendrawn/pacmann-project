@@ -7,7 +7,7 @@ from lib.transaction import Transaction
 
 def input_order():
 	"""
-	Get user input
+	Function that gets the user input.
 	"""
 	data = {
 		'Item': None,
@@ -38,7 +38,7 @@ def check_order(data : Transaction):
 if '__main__' == __name__:
 	# Read the data from the csv file
 	transaction = Transaction()
-	transaction.load_data()	# Nanti dihapus/komen aja setelah final push
+	transaction.load_data()	# Use this if you want to load the data from the csv file.
 
 	# Create a dictionary to store the data before it is added to dataframe
 	data = {
@@ -47,7 +47,7 @@ if '__main__' == __name__:
 		'Harga/item': [],
 		'Harga Total': []
 	}
-	# Create a loop to add items to the data
+	# Create a loop for the menu mechanism
 	while True:
 		# Create menu
 		print("Program Menu:")
@@ -81,7 +81,7 @@ if '__main__' == __name__:
 			print("Total price: {}".format(total_price))
 			print("Discount: {}%".format(discount))
 			print("Discount price: {}".format(discount_price))
-			helpers.clear_screen(slp=3)
+			# helpers.clear_screen(slp=3)
 		elif '3' == choice:
 			# Search item that will be deleted
 			if transaction.is_empty() == True:
@@ -106,7 +106,8 @@ if '__main__' == __name__:
 			choise_reset = input("Do you really want to reset the transaction? (y/n): ")
 			if 'y' == choise_reset:
 				transaction.reset_transaction()
-				helpers.clear_screen()
+				print("Transaction has been reset.\n")
+				# helpers.clear_screen()
 		elif '6' == choice:
 			choise_save = input("Do you really want to save the transaction? (y/n): ")
 			if 'y' == choise_save:
